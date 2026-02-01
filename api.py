@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 import pandas as pd
+from fastapi.middleware.cors import CORSMiddleware
 
 # Load model and features
 import os
@@ -13,6 +14,15 @@ features = joblib.load(os.path.join(BASE_DIR, "model/features.pkl"))
 
 
 app = FastAPI(title="Loan Approval API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],   # Allow frontend
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow OPTIONS, POST, GET, etc.
+    allow_headers=["*"],
+)
+
 
 # Input schema
 class LoanInput(BaseModel):
