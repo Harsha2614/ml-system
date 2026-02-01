@@ -3,6 +3,9 @@ from pydantic import BaseModel
 import joblib
 import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 
 # Load model and features
 import os
@@ -14,6 +17,9 @@ features = joblib.load(os.path.join(BASE_DIR, "model/features.pkl"))
 
 
 app = FastAPI(title="Loan Approval API")
+# Serve frontend files
+app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -40,8 +46,9 @@ class LoanInput(BaseModel):
 
 
 @app.get("/")
-def home():
-    return {"message": "Loan Prediction API Running"}
+def serve_frontend():
+    return FileResponse("frontend/index.html")
+
 
 
 @app.post("/predict")
