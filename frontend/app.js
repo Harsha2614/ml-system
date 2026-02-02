@@ -30,7 +30,7 @@ form.addEventListener("submit", async (e) => {
                 },
                 body: JSON.stringify(data)
             }
-        );
+        ); 
 
         const result = await res.json();
 
