@@ -22,7 +22,7 @@ form.addEventListener("submit", async (e) => {
 
     try {
         const res = await fetch(
-            "http://127.0.0.1:8000/predict",
+            "https://ml-system-r7yk.onrender.com/predict",
             {
                 method: "POST",
                 headers: {
