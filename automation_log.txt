@@ -1,0 +1,3 @@
+{"time": "2026-02-03T12:38:35.974549", "status": "OK", "response": {"prediction": "Approved", "value": 1}}
+{"time": "2026-02-03T12:40:11.890935", "status": "OK", "response": {"prediction": "Approved", "value": 1}}
+{"time": "2026-02-03T12:40:37.551323", "status": "OK", "response": {"prediction": "Rejected", "value": 0}}
